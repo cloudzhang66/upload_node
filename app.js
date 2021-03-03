@@ -7,16 +7,13 @@ const port = 3000;
 app.listen(port,()=>{console.log("listening on "+port+"...");
 })
 
-//静态资源托管 最终要访问http://host:3000/upload/xxx
 app.use(express.static("./public"))
 
-//1.引入multer中间件
 const multer = require("multer")
 const uploadDir = "public/upload/";
-let objMulter = multer({ dest: './'+uploadDir }); //dest: 指定 保存位置（存到服务器)
+let objMulter = multer({ dest: './'+uploadDir });
 
 app.use(objMulter.any());
-
 
 app.post("/upload",(req,res)=>{
     // console.log(req.files);
@@ -26,10 +23,6 @@ app.post("/upload",(req,res)=>{
         let newFile = uploadDir + f.originalname
         fs.renameSync(oldFile , newFile)
     })
-    // res.send({
-    //     err:0,
-    //     url:"http://localhost:"+port+newFile.substr("public".length)
-    // })
     res.redirect("/");
 })
 const hn = "1";
