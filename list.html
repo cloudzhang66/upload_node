@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <header>
+    <style>
+        form{
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
+    </style>
+    </header>
+
+    <body>
+        <div style="margin: 0 auto; width: 500px;">
+            <!-- filelist -->
+        </div>
+        <form enctype="multipart/form-data" action="/upload" method="POST">
+            <input type="file" name="file" multiple="multiple">
+            <input type="submit" value="上传">
+        </form>
+        <a style="position: absolute; left: 5px; top: 5px;" href="./clear"> 清空</a>
+    </body>
+</html>
